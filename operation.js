@@ -166,7 +166,7 @@ module.exports = {
       click(1244, 228);
 
       // 等房间信息窗口开
-      sleep(3000)
+      sleep(500)
 
       // 是否打开房间信息
       if (getImageLocationInScreen(i.RoomInText)) {

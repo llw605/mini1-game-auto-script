@@ -101,7 +101,7 @@ function main() {
       procedure = 0;
 
       // 重开游戏
-      func.launchGame();
+      launchGame();
       break;
 
   }
