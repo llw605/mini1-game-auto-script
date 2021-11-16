@@ -5,18 +5,18 @@
     "launchConfig": {
       "displaySplash": true,
       "hideLogs": false,
-      "splashText": "Powered by Auto.js Pro",
+      "splashText": "Powered by xiaowuyaya WUHU!",
       "stableMode": false
     },
-    "main": "main.js",
-    "name": "My Project",
+    "main": "uiWindow.js",
+    "name": "mini_QvQ",
     "optimization": {
       "removeOpenCv": false,
       "unusedResources": false
     },
-    "packageName": "org.example.my_project",
+    "packageName": "com.xiaowuyaya.miniscript",
     "scripts": {},
-    "versionCode": 1,
+    "versionCode": 1, 
     "versionName": "1.0.0",
     "ignore": ["build", "node_modules"]
   }
