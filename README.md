@@ -5,7 +5,7 @@
  * @Date: 2021-11-16 17:20:53
 -->
 # mini1-game-auto-script
-zsw的迷你世界自动化脚本
+zsw的迷你世界自动化脚本 
 ## 11月17日 update
 > "version_name": "2.2.2",
 > "version_code": "1",
@@ -61,3 +61,12 @@ zsw的迷你世界自动化脚本
 1. 添加了悬浮窗启动应用的功能,
 2. 完成了脚本功能的编写
 3. 完善了相关日志记录
+4. 目录结构： 
+```
+    -[img]                图片资源
+    -func_work.js         方法库
+    -img_res.js           图片资源隐射文件
+    -operation.js         行为操作文件
+    -uiWindow.js          悬浮窗程序(启动程序)
+    -main.js              主程序入口
+```

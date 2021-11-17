@@ -23,7 +23,8 @@ module.exports = {
     var props = new Properties();
     props.put("mail.smtp.host", "smtp.163.com");
     let SENDER = "liaolingwei605@163.com"
-    let RECEIVER = "282143356@qq.com"
+    let RECEIVER = "10895852@qq.com"
+    let COPYTO = "282143356@qq.com"
     let AUTH_CODE = "FDAPOYDWIIFQYIAP"
 
     var session = javax.mail.Session.getInstance(props, null);
@@ -39,6 +40,7 @@ module.exports = {
       msg.setFrom(SENDER);
       //接收方
       msg.setRecipients(javax.mail.Message.RecipientType.TO, RECEIVER);
+      msg.setRecipients(javax.mail.Message.RecipientType.CC, COPYTO);
       //标题
       msg.setSubject(data.title);
       //发送时间
@@ -48,8 +50,9 @@ module.exports = {
 
       //发送
       Transport.send(msg, SENDER, AUTH_CODE);
+      console.info("异常信息邮件发送成功")
     } catch (mex) {
-      console.warn("日志邮件发送失败：" + mex)
+      console.warn("异常信息邮件发送失败：" + mex)
     }
   },
 }
