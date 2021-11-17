@@ -1,8 +1,8 @@
 {
-  "name": "my-project",
+  "name": "mini1-game-auto-script",
   "version": "1.0.0",
   "description": "",
-  "main": "uiWindow.js",
+  "main": "float.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

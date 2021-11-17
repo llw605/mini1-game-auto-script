@@ -5,9 +5,7 @@
  * @Date: 2021-11-13 20:42:37
  */
 const {
-  clickHere
-} = require("./func_work");
-const {
+  clickHere,
   getImageLocationInScreen,
   findColorInScreen
 } = require("./func_work");

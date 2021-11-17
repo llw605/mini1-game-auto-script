@@ -7,8 +7,9 @@
 const {
   init,
   launchGame
-} = require("./func_work");
-const op = require("./operation");
+} = require("./main_dir/func_work");
+
+const op = require("./main_dir/operation");
 
 /* 
   流程判断，
