@@ -133,14 +133,15 @@ try{
     }
 
     // 执行程序
-    main();
+    // main();
     sleep(1000);
   } 
 }catch(e){
   // 将日志发送到邮箱
-  var log = {
-    title:"有一台设备出现异常，请查看(undefind)",
-    content: e
-  }
-  LogginSendToMail(log)
+  // var log = {
+  //   title:"有一台设备出现异常，请查看(undefind)",
+  //   content: e
+  // }
+  // LogginSendToMail(log)
+  console.warn(e);
 }

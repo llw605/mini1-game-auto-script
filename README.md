@@ -1,12 +1,20 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: xiaowuyaya
+ * @Date: 2021-11-16 17:20:53
+-->
 # mini1-game-auto-script
 zsw的迷你世界自动化脚本
 ## 11月17日 update
-> "version_name": "2.2.1",
+> "version_name": "2.2.2",
 > "version_code": "1",
 
 1. 添加了错误日志发送到邮件的功能,
 2. 添加了检查更新的功能
-3. 目录结构更新说明：
+3. 添加了关闭按钮
+4. 修复了卡设置页的bug
+5. 目录结构更新说明：
    
 ```
     -[FloatButton]        悬浮窗组件

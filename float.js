@@ -55,6 +55,11 @@ fb.addItem('info')
   .setTint('#FFFFFF')
   .setColor('#ED524E');
 
+  fb.addItem('exit')
+  .setIcon('@drawable/ic_close_black_48dp')
+  .setTint('#FFFFFF')
+  .setColor('#333333');
+
 
 //在无操作一段时间后自动关闭菜单
 fb.setAutoCloseMenuTime(3000);
@@ -92,6 +97,14 @@ fb.on('item_click', (view, name, state) => {
       // toastLog('item_click:' + name);
       return true;
       break;
+
+    case 'exit':
+      // 退出
+      if(script != null){
+        script.getEngine().forceStop();
+      }
+      exit()
+
   }
 
 

@@ -4,7 +4,7 @@
  * @Author: xiaowuyaya
  * @Date: 2021-11-17 19:33:01
  */
-runtime.loadDex("../libs/email.jar")
+runtime.loadDex("./libs/email.jar")
 importClass(java.util.Properties);
 importPackage(javax.mail);
 importPackage(javax.activation)
@@ -46,12 +46,9 @@ module.exports = {
       //发送内容
       msg.setText(data.content);
 
-      //关闭资源
-      log.close()
       //发送
       Transport.send(msg, SENDER, AUTH_CODE);
     } catch (mex) {
-      log.close()
       console.warn("日志邮件发送失败：" + mex)
     }
   },
