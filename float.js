@@ -10,6 +10,10 @@ var {
   FloatButtonConfig
 } = require('./FloatButton/init');
 
+//导入自动更新模块
+var {getNewVersion, createVersionStorage} = require('./util/version')
+
+
 let fb = new FloatButton();
 
 //修改停靠动画时间
@@ -34,12 +38,7 @@ fb.addItem('update')
   .setTint('#FFFFFF')
   //背景颜色
   .setColor('#019581')
-  //点击事件
-  .onClick((view, name) => {
-    toastLog('onClick:' + name)
-    //返回 true:保持菜单开启 false:关闭菜单
-    return false;
-  });
+
 
 
 fb.addItem('run')
@@ -69,13 +68,15 @@ fb.on('item_click', (view, name, state) => {
 
   switch (name) {
     case 'update':
-      toastLog('item_click:' + name);
+      // 检查更新
+      getNewVersion();
+
       //返回 true:保持菜单开启 false:关闭菜单
       return true;
       break;
 
     case 'run':
-      toastLog('名称 : ' + name + '\n状态 : ' + state);
+      // toastLog('名称 : ' + name + '\n状态 : ' + state);
 
       if (state) {
         // 运行脚本程序
@@ -88,7 +89,7 @@ fb.on('item_click', (view, name, state) => {
       break;
 
     case 'info':
-      toastLog('item_click:' + name);
+      // toastLog('item_click:' + name);
       return true;
       break;
   }
@@ -97,5 +98,8 @@ fb.on('item_click', (view, name, state) => {
 
 });
 
+// 创建版本缓存
+createVersionStorage();
 
+// 显示悬浮窗
 fb.show();

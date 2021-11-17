@@ -87,13 +87,6 @@ module.exports = {
 
   init() {
 
-    // 日志存储地址
-    // let logPath = "/sdcard/xiaowuyaya/mini1_script/" + Date.parse(new Date()) + ".log"
-    // console.setGlobalLogConfig({
-    //   file: logPath,
-    // });
-    // console.log("日志文件存储在: %s", logPath);
-
     console.info("========初始化========");
 
     // 初始化
@@ -189,4 +182,17 @@ module.exports = {
     }
     // sleep(1500);
   },
+
+  logging(){
+    // 日志存储地址
+    let logPath = "/sdcard/xiaowuyaya/mini1_script/log/" + Date.parse(new Date()) + ".log"
+    
+    console.setGlobalLogConfig({
+      file: logPath,
+      maxFileSize: 1048576,// 1MB
+      maxBackupSize: 10
+    });
+    console.log("日志文件存储在: %s", logPath);
+  },
+
 };

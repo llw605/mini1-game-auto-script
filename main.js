@@ -6,11 +6,13 @@
  */
 const {
   init,
-  launchGame
+  launchGame,
+  logging
 } = require("./main_dir/func_work");
 
 const op = require("./main_dir/operation");
 
+const {LogginSendToMail} = require("./util/email")
 /* 
   流程判断，
   0: 进入游戏中
@@ -112,24 +114,33 @@ function main() {
 
 /* ==========================执行============================ */
 
+try{
+    // 初始化
+  init()
+  //日志初始化
+  // logging()
 
-// 初始化
-init()
+  // 启动游戏
+  launchGame();
 
-// 启动游戏
-launchGame();
+  while (true) {
 
-while (true) {
+    if (procedureRunTime == 15) {
+      procedure = 0;
+      procedureRunTime = 0;
+      // 重启游戏
+      launchGame();
+    }
 
-  if (procedureRunTime == 15) {
-    procedure = 0;
-    procedureRunTime = 0;
-    // 重启游戏
-    launchGame();
+    // 执行程序
+    main();
+    sleep(1000);
+  } 
+}catch(e){
+  // 将日志发送到邮箱
+  var log = {
+    title:"有一台设备出现异常，请查看(undefind)",
+    content: e
   }
-
-  // 执行程序
-  main();
-
-  sleep(1000);
+  LogginSendToMail(log)
 }
