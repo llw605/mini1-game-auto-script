@@ -9,8 +9,11 @@ zsw的迷你世界自动化脚本
 
 
 ## 11月17日 update
+
 > "version_name": "2.2.2",
 > "version_code": "1",
+
+#### 下载地址： [mini_QvQ_v2.2.2.apk](https://github.com/llw605/mini1-script/releases/download/app/mini_QvQ_v2.2.2.apk)
 
 1. 添加了错误日志发送到邮件的功能,
 2. 添加了检查更新的功能
