@@ -20,7 +20,7 @@ let fb = new FloatButton();
 FloatButtonConfig.time.direction = 510;
 
 //设置logo图标
-fb.setIcon('https://llw605.github.io/ek1.github.io/res/mini1_script/imgs/logo.png');
+fb.setIcon('https://llw605.github.io/mini1-script/img/logo.png');
 //设置logo图标着色
 //fb.setTint('#FFFFFF');
 //设置logo背景颜色

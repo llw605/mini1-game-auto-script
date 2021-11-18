@@ -4,8 +4,10 @@
  * @Author: xiaowuyaya
  * @Date: 2021-11-16 17:20:53
 -->
-# mini1-game-auto-script
+# mini1-script
 zsw的迷你世界自动化脚本 
+
+
 ## 11月17日 update
 > "version_name": "2.2.2",
 > "version_code": "1",
@@ -25,6 +27,7 @@ zsw的迷你世界自动化脚本
         --func_work.js    方法库
         --img_res.js      图片资源隐射文件
         --operation.js    行为操作文件
+    [res]                 更新资源路径
     -[util]               工具包
         --email.js        邮件模块
         --version.js      版本更新组件
@@ -32,7 +35,7 @@ zsw的迷你世界自动化脚本
     -main.js              主程序入口
     -version.json         版本信息
 ```
-*TODO: 检测主程序异常重启功能，热更新功能（是否对话框确定？）*
+**TODO: 检测主程序异常重启功能，热更新功能（是否对话框确定？）,自启动**
 ## 11月16日 update
 > "version_name": "2.1.1",
 > "version_code": "1",

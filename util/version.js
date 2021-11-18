@@ -37,7 +37,7 @@ module.exports = {
     log("更新：正在检查新版本... \n 当前： \n 版本：%s \n 图片资源版本：%s ", local_version.bin.version_name, local_version.img.date)
     toast("更新：正在检查新版本...")
 
-    var address = "https://llw605.github.io/ek1.github.io/app_update.json"
+    var address = "https://llw605.github.io/mini1-script/version.json"
     http.get(address, {}, function (res, err) {
       if (err) {
         console.error("更新：http请求异常,%s", err);
@@ -46,7 +46,7 @@ module.exports = {
 
       if (res.statusCode === 200) {
         // 请求成功
-        var new_version = JSON.parse(res.body.string()).mini1_script
+        var new_version = JSON.parse(res.body.string())
 
         //判断
         if (local_version.bin.version_name != new_version.bin.version_name) {

@@ -163,12 +163,21 @@ module.exports = {
 
     // 滑动关闭
     recents(); // 进入任务窗口
-    var app = desc("迷你世界" + ",未加锁").findOne().bounds(); //获取应用的bounds布局属性
-    console.log(app);
-    swipe(app.centerX(), app.centerY(), device.width, app.centerY(), 300); //模拟滑屏
-    sleep(1000);
-    home(); //返回桌面
-    sleep(1000);
+    sleep(1500);
+    var findApp = desc("迷你世界" + ",未加锁").findOnce();
+    if (findApp != null) {
+      log("关闭游戏中")
+      var app = findApp.bounds();
+      console.log(app);
+      swipe(app.centerX(), app.centerY(), device.width, app.centerY(), 300); //模拟滑屏
+      sleep(1000);
+      home(); //返回桌面
+      sleep(1000);
+    } else {
+      log("未找到");
+      home();
+    }
+
 
     // 用包名打开，如果找不到找游戏名
     if (!launch(appPackage)) {
