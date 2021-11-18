@@ -48,28 +48,41 @@ module.exports = {
         // 请求成功
         var new_version = JSON.parse(res.body.string())
 
+        var r = {
+          bin: false,
+          bin_link: "",
+          img: false,
+          img_link: ""
+        }
+
         //判断
         if (local_version.bin.version_name != new_version.bin.version_name) {
           log("更新：检查到有新版本发布！")
           toastLog("更新：检查到有新版本发布！")
 
-          return
+          r.bin = true,
+            r.bin_link = new_version.bin.link
         }
 
         if (local_version.img.date != new_version.img.date) {
           log("更新：检查到图片资源更新！")
           toastLog("更新：检查到图片资源更新！")
-
-          return
+          r.img = true,
+            r.img_link = new_version.img.link
         }
 
-        log("更新：当前为最新版本！")
-        toast("更新：当前为最新版本！")
+        if (!r.bin && !r.img) {
+          log("更新：当前为最新版本！")
+          toast("更新：当前为最新版本！")
+        }
+
+
+
       } else {
         log("更新：网络异常")
         toastLog("更新：网络异常")
       }
     });
-  }  
+  }
 
 }

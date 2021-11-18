@@ -2,9 +2,11 @@
   "bin": {
     "version_name": "2.2.2",
     "version_code": "1",
-    "introduce": "1. 添加了错误日志发送到邮件的功能,2. 添加了检查更新的功能3. 添加了关闭按钮4. 修复了卡设置页的bug "
+    "introduce": "1. 添加了错误日志发送到邮件的功能,2. 添加了检查更新的功能3. 添加了关闭按钮4. 修复了卡设置页的bug ",
+    "link": "https://github.com/llw605/mini1-script/archive/refs/tags/app.zip"
   },
   "img": {
-    "date": "2021-11-17"
+    "date": "2021-11-17",
+    "link": "https://github.com/llw605/mini1-script/releases/download/app/2021-11-17.zip"
   }
 }

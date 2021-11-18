@@ -66,6 +66,8 @@ fb.setAutoCloseMenuTime(3000);
 
 // 初始化脚本引擎
 var script = null;
+// 检测线程初始化
+var check = null;
 
 //菜单按钮点击事件
 fb.on('item_click', (view, name, state) => {
@@ -86,9 +88,24 @@ fb.on('item_click', (view, name, state) => {
       if (state) {
         // 运行脚本程序
         script = engines.execScriptFile("./main.js");
+
+        // 开启线程监听脚本程序是否自动关闭
+        // TODO 测试
+        // check = threads.start(()=>{
+        //   setInterval(() => {
+        //     if(engines.all().length = 1){
+        //       // 重启脚本
+        //       script.getEngine().forceStop();
+        //       script = engines.execScriptFile("./main.js");
+        //     }
+        //   }, 10000);
+        // })
+
       } else {
         // 关闭脚本程序
         script.getEngine().forceStop();
+        // 关闭检测线程
+        // threads.shutDownAll()
       }
       return true;
       break;
