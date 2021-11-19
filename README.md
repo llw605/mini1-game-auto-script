@@ -6,6 +6,20 @@
 -->
 # mini1-script
 zsw的迷你世界自动化脚本 
+## 11月19日 update
+
+> "version_name": "2.4.1",
+> "version_code": "1",
+
+#### 下载地址：[mini_QvQ_v2.4.1.apk](https://github.com/llw605/mini1-script/releases/download/untagged-e3d89cccf211e9ee2809/mini_QvQ_v2.4.1.apk)
+
+1. 修复了再启动游戏时，因为waitFor()方法导致的阻塞bug(程序卡死)
+2. 增加了判断main进程是否异常退出的模块，在程序应该进行时，如果main进程卡死，则重启，该模块每20秒检测一次
+3. 修改了日志的输出格式
+   
+**TODO：checkEngines模块无法判断是否因为阻塞而导致的程序暂停，后续可以通过引擎之间通讯的方式解决，发送心跳包判断线程是否正常**
+
+
 
 ## 11月18日 update
 

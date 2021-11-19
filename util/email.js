@@ -50,9 +50,9 @@ module.exports = {
 
       //发送
       Transport.send(msg, SENDER, AUTH_CODE);
-      console.info("异常信息邮件发送成功")
+      console.info("[邮件] 异常信息发送成功")
     } catch (mex) {
-      console.warn("异常信息邮件发送失败：" + mex)
+      console.warn("[邮件] 异常信息发送失败：" + mex)
     }
   },
 }

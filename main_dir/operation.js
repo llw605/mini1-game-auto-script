@@ -4,6 +4,7 @@
  * @Author: xiaowuyaya
  * @Date: 2021-11-13 20:42:37
  */
+const { info, warn } = require("__console__");
 const {
   clickHere,
   getImageLocationInScreen,
@@ -19,7 +20,7 @@ module.exports = {
    */
   beginGame() {
 
-    console.info("========正在执行流程0：进入游戏窗口========");
+    info("[流程] 0: 进入游戏窗口")
     // clickHere(i.joinGame);
     // clickColorInScreen("#FCCF1E", 500, 485, 150,80)
     click(656, 520)
@@ -41,10 +42,10 @@ module.exports = {
    */
   isBeginGameOver() {
     if (getImageLocationInScreen(i.friendButtom)) {
-      console.log("判断：已成功进入大厅");
+      log("[判断] 进入大厅: yes");
       return true;
     }
-    console.log("判断：暂未进入大厅");
+    log("[判断] 进入大厅: no");
     return false;
   },
 
@@ -54,7 +55,7 @@ module.exports = {
    * @return {*}
    */
   gameBeginCloseWindow() {
-    console.info("========正在执行流程1：关闭游戏中的弹窗========");
+    info("[流程] 1: 关闭游戏中的弹窗")
     clickHere(i.advertisement_1);
     clickHere(i.advertisement_2);
     clickHere(i.accountSecurity);
@@ -69,10 +70,10 @@ module.exports = {
    */
   isGameBeginCloseWindowOver() {
     if (getImageLocationInScreen(i.onlineGame)) {
-      console.log("判断：游戏内弹窗已经关闭");
+      log("[判断] 关闭游戏内弹窗: yes");
       return true;
     }
-    console.log("判断：游戏内弹窗未完全关闭");
+    log("[判断] 关闭游戏内弹窗: no");
     return false;
   },
 
@@ -84,7 +85,7 @@ module.exports = {
    * @return {*}
    */
   enterMap() {
-    console.info("========正在执行流程2：进入地图========");
+    info("[流程] 2: 进入地图")
     clickHere(i.onlineGame);
     clickHere(i.createRoom);
     clickHere(i.goGameRoom);
@@ -100,22 +101,22 @@ module.exports = {
    */
   isEnterMapOver() {
     if (getImageLocationInScreen(i.onlineGame)) {
-      console.log("判断：未进入地图");
+      log("[判断] 进入地图: no");
       return false;
     }
     if (getImageLocationInScreen(i.createRoom)) {
-      console.log("判断：未进入地图");
+      log("[判断] 进入地图: no");
       return false;
     }
     if (getImageLocationInScreen(i.goGameRoom)) {
-      console.log("判断：未进入地图");
+      log("[判断] 进入地图: no");
       return false;
     }
     if (getImageLocationInScreen(i.eveningGamesNotic)) {
-      console.log("判断：未进入地图");
+      log("[判断] 进入地图: no");
       return false;
     }
-    console.log("判断：已进入地图");
+    log("[判断] 进入地图: yes");
     return true;
   },
 
@@ -125,7 +126,7 @@ module.exports = {
    * @return {*}
    */
   closeWindowOnMap() {
-    console.info("========正在执行流程3：关闭地图中的窗口========");
+    info("[流程] 3: 关闭地图中的窗口")
     clickHere(i.windowsInGame_1);
     clickHere(i.windowsInGame_2);
     clickHere(i.windowsInGame_3);
@@ -139,10 +140,10 @@ module.exports = {
    */
   isCloseWindowOnMapOver() {
     if (getImageLocationInScreen(i.InGameMap)) {
-      console.log("判断：关闭地图中的弹窗完成");
+      log("[判断] 关闭地图中的窗口: yes");
       return true;
     }
-    console.log("判断：关闭地图中的弹窗未完成");
+    log("[判断] 关闭地图中的窗口: no");
     return false;
   },
 
@@ -152,14 +153,13 @@ module.exports = {
    * @return {*}
    */
   getNumOfUser() {
-
-    console.info("========正在执行流程4：判断当前房间是否有人========");
+    info("[流程] 4: 判断房间是否有人")
 
     while (true) {
 
       clickHere(i.tryAgain)
 
-      console.log("检测到玩家已经死亡，复活中...")
+      log("[流程] 4: 检测到玩家已经死亡，出发复活事件")
       // 房间信息坐标
       click(1244, 228);
 
@@ -179,18 +179,18 @@ module.exports = {
         click(1250, 25);
 
         if (p1 && p2 && p3) {
-          console.log("当前房间没人");
+          log("[判断] 房间是否有人: no");
           return false;
           break;
 
         }
-        console.log("当前房间有人");
+        log("[判断] 房间是否有人: yes");
         return true;
         break;
 
       } else {
         // 没进就break
-        console.warn("未打开房间信息");
+        warn("[判断] 房间是否有人: 未打开房间信息")
         return false;
         break
       }

@@ -11,7 +11,12 @@ var {
 } = require('./FloatButton/init');
 
 //导入自动更新模块
-var {getNewVersion, createVersionStorage} = require('./util/version')
+var {
+  getNewVersion,
+  createVersionStorage
+} = require('./util/version')
+
+
 
 
 let fb = new FloatButton();
@@ -55,7 +60,7 @@ fb.addItem('info')
   .setTint('#FFFFFF')
   .setColor('#ED524E');
 
-  fb.addItem('exit')
+fb.addItem('exit')
   .setIcon('@drawable/ic_close_black_48dp')
   .setTint('#FFFFFF')
   .setColor('#333333');
@@ -66,7 +71,7 @@ fb.setAutoCloseMenuTime(3000);
 
 // 初始化脚本引擎
 var script = null;
-// 检测线程初始化
+// 检测模块初始化
 var check = null;
 
 //菜单按钮点击事件
@@ -83,43 +88,41 @@ fb.on('item_click', (view, name, state) => {
       break;
 
     case 'run':
-      // toastLog('名称 : ' + name + '\n状态 : ' + state);
 
       if (state) {
         // 运行脚本程序
+        log("[开始] main.js")
         script = engines.execScriptFile("./main.js");
-
-        // 开启线程监听脚本程序是否自动关闭
-        // TODO 测试
-        // check = threads.start(()=>{
-        //   setInterval(() => {
-        //     if(engines.all().length = 1){
-        //       // 重启脚本
-        //       script.getEngine().forceStop();
-        //       script = engines.execScriptFile("./main.js");
-        //     }
-        //   }, 10000);
-        // })
-
+        
+        // 检查线程是否存在
+        log("[开始] checkEngines.js")
+        check = engines.execScriptFile("./util/checkEngines.js")
+        
       } else {
+        // 关闭检测
+        log("[终止] checkEngines.js")
+        check.getEngine().forceStop();
         // 关闭脚本程序
+        log("[终止] main.js")
         script.getEngine().forceStop();
-        // 关闭检测线程
-        // threads.shutDownAll()
+        
       }
       return true;
       break;
 
     case 'info':
-      // toastLog('item_click:' + name);
+      toastLog("power by XIAOWUYAYA")
       return true;
       break;
 
     case 'exit':
-      // 退出
-      if(script != null){
-        script.getEngine().forceStop();
-      }
+      // 关闭检测
+      log("[终止] checkEngines.js")
+      check.getEngine().forceStop();
+      // 关闭脚本程序
+      log("[终止] main.js")
+      script.getEngine().forceStop();
+
       exit()
 
   }

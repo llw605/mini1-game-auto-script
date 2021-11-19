@@ -17,6 +17,6 @@
     "packageName": "com.xiaowuyaya.mini1_script",
     "scripts": {},
     "versionCode": 1, 
-    "versionName": "2.2.2",
+    "versionName": "2.4.1",
     "ignore": ["build", "node_modules"]
   }
