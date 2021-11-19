@@ -1,5 +1,3 @@
-const { info } = require("__console__");
-
 /*
  * @Descripttion: 方法库
  * @version:
@@ -43,10 +41,10 @@ module.exports = {
         x: r.x + imgInfo.width / 2,
         y: r.y + imgInfo.height / 2,
       };
-      log("[截屏找图] %s: %s",imgPath, JSON.stringify(point));
+      console.log("[截屏找图] %s: %s", imgPath, JSON.stringify(point));
       return point;
     }
-    log("[截屏找图] %s: 未找到",imgPath);
+    console.log("[截屏找图] %s: 未找到", imgPath);
     return null;
   },
 
@@ -65,11 +63,11 @@ module.exports = {
     sleep(1000);
     var point = images.findColorEquals(screenImg, color, x, y, width, height);
     screenImg.recycle;
-    log("[截屏找色] %s: %s", color, point);
+    console.log("[截屏找色] %s: %s", color, point);
     if (point) {
       return true;
     }
-    log("[截屏找色] %s: %s", color, "未找到");
+    console.log("[截屏找色] %s: %s", color, "未找到");
     return false;
   },
 
@@ -79,20 +77,20 @@ module.exports = {
     sleep(1000);
     var point = images.findColorEquals(screenImg, color, x, y, width, height);
     screenImg.recycle;
-    log("[截屏找色并点击] %s: %s", color, point);
+    console.log("[截屏找色并点击] %s: %s", color, point);
     if (point) {
       click(point.x, point.y);
     }
-    log("[截屏找色并点击] %s: %s", color, "未找到");
+    console.log("[截屏找色并点击] %s: %s", color, "未找到");
     return null;
   },
 
   init() {
 
-    info("初始化：")
+    console.info("初始化：")
 
     // 初始化
-    toastLog("[初始化] 应用初始化中");
+    toast("[初始化] 应用初始化中");
 
     // 无障碍服务
     auto("fast");
@@ -105,7 +103,7 @@ module.exports = {
       $floaty.requestPermission();
       exit();
     } else {
-      log("[初始化] 已有悬浮窗权限");
+      console.log("[初始化] 已有悬浮窗权限");
     }
 
     // 截图权限
@@ -114,7 +112,7 @@ module.exports = {
     });
 
     // 前台服务状态
-    log("[初始化] " + "前台服务: " + $settings.isEnabled("foreground_service"));
+    console.log("[初始化] " + "前台服务: " + $settings.isEnabled("foreground_service"));
     // 开启前台服务
     $settings.setEnabled("foreground_service", true);
   },
@@ -125,7 +123,7 @@ module.exports = {
    * @return {*}
    */
   launchGame() {
-    info("启动游戏： ")
+    console.info("启动游戏： ")
     // 返回home
     home();
 
@@ -134,7 +132,7 @@ module.exports = {
     sleep(2000);
 
     // 关闭游戏
-    log("[启动游戏] 正在关闭游戏进程");
+    console.log("[启动游戏] 正在关闭游戏进程");
 
 
     // 滑动关闭
@@ -142,18 +140,28 @@ module.exports = {
     sleep(1500);
     // 查找后台
 
-    if(text("迷你世界").exists()){
-      log("[启动游戏] 找到游戏后台")
-      var app = text("迷你世界").findOne(5000).bounds();
 
-      swipe(app.centerX(), app.centerY(), device.width, app.centerY(), 300); //模拟滑屏
-      sleep(1000);
-      home(); //返回桌面  Cannot find function centerX in object UiObject
-      sleep(1000);
+    if (desc("迷你世界").exists()) {
+      console.log("[启动游戏] 找到游戏后台")
+      
+      
+      var app = text("迷你世界").findOne(5000).bounds();
+      swipe(app.width() , app.centerY(), app.width() , device.height, 500); //模拟滑屏
+
+      text("全部清除").findOne(5000).click()
+
+      sleep(2000)
+    
+
+      // sleep(1000);
+      // home(); //返回桌面  Cannot find function centerX in object UiObject
+      // sleep(1000);
+    } else {
+      log("[启动游戏] 未找到游戏后台")
     }
-    
-    
-    log("[启动游戏] 未找到游戏后台")
+
+
+
     log("package: %s", appPackage)
     // 用包名打开，如果找不到找游戏名
     if (!launch(appPackage)) {

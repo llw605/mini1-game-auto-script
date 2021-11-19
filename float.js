@@ -91,19 +91,19 @@ fb.on('item_click', (view, name, state) => {
 
       if (state) {
         // 运行脚本程序
-        log("[开始] main.js")
+        console.log("[开始] main.js")
         script = engines.execScriptFile("./main.js");
         
         // 检查线程是否存在
-        log("[开始] checkEngines.js")
+        console.log("[开始] checkEngines.js")
         check = engines.execScriptFile("./util/checkEngines.js")
         
       } else {
         // 关闭检测
-        log("[终止] checkEngines.js")
+        console.log("[终止] checkEngines.js")
         check.getEngine().forceStop();
         // 关闭脚本程序
-        log("[终止] main.js")
+        console.log("[终止] main.js")
         script.getEngine().forceStop();
         
       }
@@ -117,10 +117,10 @@ fb.on('item_click', (view, name, state) => {
 
     case 'exit':
       // 关闭检测
-      log("[终止] checkEngines.js")
+      console.log("[终止] checkEngines.js")
       check.getEngine().forceStop();
       // 关闭脚本程序
-      log("[终止] main.js")
+      console.log("[终止] main.js")
       script.getEngine().forceStop();
 
       exit()

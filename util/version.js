@@ -34,13 +34,13 @@ module.exports = {
     local_version = JSON.parse(storage.get("local_version"))
 
     // 发送请求
-    log("更新：正在检查新版本... \n 当前： \n 版本：%s \n 图片资源版本：%s ", local_version.bin.version_name, local_version.img.date)
-    toast("更新：正在检查新版本...")
+    console.log("[更新] 正在检查新版本... \n 当前： \n 版本：%s \n 图片资源版本：%s ", local_version.bin.version_name, local_version.img.date)
+    toast("正在检查新版本...")
 
     var address = "https://llw605.github.io/mini1-script/version.json"
     http.get(address, {}, function (res, err) {
       if (err) {
-        console.error("更新：http请求异常,%s", err);
+        console.error("[更新] http请求异常,%s", err);
         return;
       }
 
@@ -57,22 +57,22 @@ module.exports = {
 
         //判断
         if (local_version.bin.version_name != new_version.bin.version_name) {
-          log("更新：检查到有新版本发布！")
-          toastLog("更新：检查到有新版本发布！")
+          console.log("[更新] 检查到有新版本发布！")
+          toast("检查到有新版本发布！")
 
           r.bin = true,
             r.bin_link = new_version.bin.link
         }
 
         if (local_version.img.date != new_version.img.date) {
-          log("更新：检查到图片资源更新！")
-          toastLog("更新：检查到图片资源更新！")
+          console.log("[更新] 检查到图片资源更新！")
+          toast("检查到图片资源更新！")
           r.img = true,
             r.img_link = new_version.img.link
         }
 
         if (!r.bin && !r.img) {
-          log("更新：当前为最新版本！")
+          console.log("[更新] 当前为最新版本！")
           toast("更新：当前为最新版本！")
         }
 
