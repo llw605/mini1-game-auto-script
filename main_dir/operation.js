@@ -21,17 +21,17 @@ module.exports = {
   beginGame() {
 
     console.info("[流程] 0: 进入游戏窗口")
-    // clickHere(i.joinGame);
+    clickHere(i.joinGame);
     // clickColorInScreen("#FCCF1E", 500, 485, 150,80)
-    click(656, 520)
-    sleep(1000)
-    // clickHere(i.eveningGamesNotic);
+    // click(656, 520)
+    sleep(1500)
+    clickHere(i.eveningGamesNotic);
     // clickColorInScreen("#fdda12", 560, 575, 150,40)
-    click(640, 590)
-    sleep(1000)
-    // clickHere(i.systemNotice);
+    // click(640, 590)
+    sleep(1500)
+    clickHere(i.systemNotice);
     // clickColorInScreen("#fdda12", 555, 450, 150,40)
-    click(640, 465)
+    // click(640, 465)
     sleep(5000)
   },
 

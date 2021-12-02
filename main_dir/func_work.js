@@ -117,63 +117,60 @@ module.exports = {
     $settings.setEnabled("foreground_service", true);
   },
 
-  /**
+/**
    * @name: 打开游戏
    * @param {*}
    * @return {*}
    */
-  launchGame() {
-    console.info("启动游戏： ")
-    // 返回home
-    home();
+ launchGame() {
+  console.info("启动游戏： ")
+  // 返回home
+  home();
 
-    var appPackage = getPackageName("迷你世界");
+  var appPackage = getPackageName("迷你世界");
 
+  sleep(3000);
+
+  // 关闭游戏
+  console.log("[启动游戏] 正在关闭游戏进程");
+
+  app.openAppSetting(appPackage);
+  sleep(5000)
+
+
+  // 关闭操作
+  let isSure = textMatches(/(.*强.*|.*停.*|.*结.*|.*行.*)/).findOne();
+  if (isSure.enabled()) {
+    textMatches(/(.*强.*|.*停.*|.*结.*|.*行.*)/)
+      .findOne()
+      .click();
     sleep(2000);
-
-    // 关闭游戏
-    console.log("[启动游戏] 正在关闭游戏进程");
-
-
-    // 滑动关闭
-    recents(); // 进入任务窗口
-    sleep(1500);
-    // 查找后台
-
-
-    if (desc("迷你世界").exists()) {
-      console.log("[启动游戏] 找到游戏后台")
-      
-      
-      var app = text("迷你世界").findOne(5000).bounds();
-      swipe(app.width() , app.centerY(), app.width() , device.height, 500); //模拟滑屏
-
-      text("全部清除").findOne(5000).click()
-
-      sleep(2000)
-    
-
-      // sleep(1000);
-      // home(); //返回桌面  Cannot find function centerX in object UiObject
-      // sleep(1000);
-    } else {
-      log("[启动游戏] 未找到游戏后台")
-    }
+    textMatches(/(.*确.*|.*定.*)/)
+      .findOne()
+      .click();
+    log("[启动游戏] 关闭成功")
+    sleep(1000);
+    home();
+  } else {
+    log("[启动游戏] 应用不能被正常关闭或者不在后台运行");
+    sleep(1000);
+    home();
+  }
 
 
 
-    log("package: %s", appPackage)
-    // 用包名打开，如果找不到找游戏名
-    if (!launch(appPackage)) {
-      launchApp("迷你世界")
-      sleep(5000);
-    }
+  log("package: %s", appPackage)
+  // 用包名打开，如果找不到找游戏名
+  if (!launch(appPackage)) {
+    launchApp("迷你世界")
+    sleep(5000);
+  }
 
-    log("[启动游戏] 正在等待游戏启动")
+  log("[启动游戏] 正在等待游戏启动")
 
-    // 等待游戏启动
-    waitForPackage(appPackage, 500)
-  },
+  // 等待游戏启动
+  waitForPackage(appPackage, 500)
+},
 
   /**
    * @name: 点击图片所在位置
@@ -184,6 +181,7 @@ module.exports = {
     var point = this.getImageLocationInScreen(imgPath);
     if (point) {
       click(point.x, point.y);
+      sleep(3000)
     }
   },
 

@@ -142,6 +142,6 @@ try{
     title:"有一台设备出现异常，请查看",
     content: "异常内容： \n " + e
   }
-  LogginSendToMail(log)
+  // LogginSendToMail(log)
   console.warn(e);
 }
