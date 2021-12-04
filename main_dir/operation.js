@@ -32,7 +32,7 @@ module.exports = {
     clickHere(i.systemNotice);
     // clickColorInScreen("#fdda12", 555, 450, 150,40)
     // click(640, 465)
-    sleep(5000)
+    sleep(8000)
   },
 
   /**

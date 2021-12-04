@@ -5,6 +5,9 @@
  * @Date: 2021-11-13 21:41:07
  */
 
+  // 游戏图标
+  module.exports.gameIcon = "./img/game.png"
+
   // 进入游戏
   module.exports.joinGame = "./img/1-s.png",
 

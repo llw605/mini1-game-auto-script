@@ -5,6 +5,7 @@
  * @Date: 2021-11-13 17:47:24
  */
 module.exports = {
+
   /**
    * @name: 在当前屏幕下找到输入图片
    * @param {*} img 要找的图片
@@ -117,60 +118,7 @@ module.exports = {
     $settings.setEnabled("foreground_service", true);
   },
 
-/**
-   * @name: 打开游戏
-   * @param {*}
-   * @return {*}
-   */
- launchGame() {
-  console.info("启动游戏： ")
-  // 返回home
-  home();
 
-  var appPackage = getPackageName("迷你世界");
-
-  sleep(3000);
-
-  // 关闭游戏
-  console.log("[启动游戏] 正在关闭游戏进程");
-
-  app.openAppSetting(appPackage);
-  sleep(5000)
-
-
-  // 关闭操作
-  let isSure = textMatches(/(.*强.*|.*停.*|.*结.*|.*行.*)/).findOne();
-  if (isSure.enabled()) {
-    textMatches(/(.*强.*|.*停.*|.*结.*|.*行.*)/)
-      .findOne()
-      .click();
-    sleep(2000);
-    textMatches(/(.*确.*|.*定.*)/)
-      .findOne()
-      .click();
-    log("[启动游戏] 关闭成功")
-    sleep(1000);
-    home();
-  } else {
-    log("[启动游戏] 应用不能被正常关闭或者不在后台运行");
-    sleep(1000);
-    home();
-  }
-
-
-
-  log("package: %s", appPackage)
-  // 用包名打开，如果找不到找游戏名
-  if (!launch(appPackage)) {
-    launchApp("迷你世界")
-    sleep(5000);
-  }
-
-  log("[启动游戏] 正在等待游戏启动")
-
-  // 等待游戏启动
-  waitForPackage(appPackage, 500)
-},
 
   /**
    * @name: 点击图片所在位置
@@ -181,7 +129,7 @@ module.exports = {
     var point = this.getImageLocationInScreen(imgPath);
     if (point) {
       click(point.x, point.y);
-      sleep(3000)
+      sleep(2000)
     }
   },
 

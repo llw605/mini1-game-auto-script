@@ -72,7 +72,7 @@ fb.setAutoCloseMenuTime(3000);
 // 初始化脚本引擎
 var script = null;
 // 检测模块初始化
-var check = null;
+// var check = null;
 
 //菜单按钮点击事件
 fb.on('item_click', (view, name, state) => {
@@ -95,13 +95,13 @@ fb.on('item_click', (view, name, state) => {
         script = engines.execScriptFile("./main.js");
         
         // 检查线程是否存在
-        console.log("[开始] checkEngines.js")
-        check = engines.execScriptFile("./util/checkEngines.js")
+        // console.log("[开始] checkEngines.js")
+        // check = engines.execScriptFile("./util/checkEngines.js")
         
       } else {
         // 关闭检测
-        console.log("[终止] checkEngines.js")
-        check.getEngine().forceStop();
+        // console.log("[终止] checkEngines.js")
+        // check.getEngine().forceStop();
         // 关闭脚本程序
         console.log("[终止] main.js")
         script.getEngine().forceStop();
@@ -117,8 +117,8 @@ fb.on('item_click', (view, name, state) => {
 
     case 'exit':
       // 关闭检测
-      console.log("[终止] checkEngines.js")
-      check.getEngine().forceStop();
+      // console.log("[终止] checkEngines.js")
+      // check.getEngine().forceStop();
       // 关闭脚本程序
       console.log("[终止] main.js")
       script.getEngine().forceStop();
